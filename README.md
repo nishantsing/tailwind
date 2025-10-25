@@ -14,26 +14,112 @@
 - generates utilities classes only for the css we use.
 
 ## basic classes
+
+#### Spacing
+
 - p | m | w | h | w-full
 - p-4 | px-4 | py-4 | pr-4 | pl-4 | pb-4 | pt-4 | p-[10px]  | w-1/2
-- text-center | text-xl | text-lg | text-white-600
-- font-mono | font-bold | font-semibold | font-extrabold
-- border-2 | border-black | border-solid
+
+- px-[5rem] | py-[10%] | py-[1px] | py-1 | pe-2(padding-inline-end: calc(var(--spacing) * 2)) | pl-4 | pt-0 | -ml-2 | ms-5 (margin-inline-start: calc(var(--spacing) * 5)) | pe-px(Set horizontal end padding to 1 pixel.
+) | 
+
+
+-space-x-1 (Set horizontal space between children to negative level 1 spacing.)| 
+space-y-3 (Set vertical space between children to level 3 spacing.) | space-x-[5rem] |
+space-y-px (Set vertical space between children to 1 pixel.)
+
+#### Typography
+
+- text-center | text-xl | text-lg | text-white | text-white-600 | text-3xl | text-xs | text-4xl | text-pretty(text-wrap: pretty) | text-clip(text-overflow: clip) | text-inherit(color:inherit) | 
+
+- font-mono | font-bold | font-medium(font-weight: 500) | font-semibold | font-extrabold(font-weight: 800;) | font-black | font-stretch-condensed(font-stretch-condensed)
+
+-  lowercase(text-transform: lowercase) | not-italic(font-style: normal) | indent-1(text-indent: calc(var(--spacing) * 1)) | indent-2 | indent-px(text-indent: 1px) | decoration-wavy(text-decoration-style: wavy) |decoration-dotted (text-decoration-type:dotted) | decoration-pink-500 (text-decoration-color: var(--color-pink-500))| truncate(overflow:hidden, text-overflow:ellipsis, white-space: nowrap) | overline(text-decoration-line: overline) | whitespace-pre(white-space:pre) | whitespace-pre-line(white-space: pre-line) | whitespace-break-spaces(white-space: pre-wrap) | tracking-wide(letter-spacing: var(--tracking-wide)) | tracking-tight(letter-spacing: var(--tracking-tight)) | hyphens-auto(hyphens:auto) | list-decimal(list-style-type: decimal) | list-disc(list-style-type: disc) | break-words(overflow-wrap: break-word) | break-normal(overflow-wrap: normal, word-break: normal) | list-inside(list-style-position: inside) | list-none(list-style-type: none) | line-clamp-none(overflow: visible, display: block, -webkit-box-orient: horizontal, -webkit-line-clamp: unset) | line-clamp-2 (overflow: hidden, display: -webkit-box, -webkit-box-orient: vertical, -webkit-line-clamp: 2) |  antialiased(-webkit-font-smoothing: antialiased, -moz-osx-font-smoothing: grayscale) | 
+
+#### Color
+
+- border-rose-400 | bg-sky-500 | text-white-600 | border-transparent | bg-purple-50/75(background-color: color-mix(in oklab, var(--color-purple-50) 75%, transparent)) | border-orange-950/[80.8%] | border-white/[80.5%]
+
+- border-2 | border-black | border-rose-400 | border-solid
 - absolute
 - bg-sky-500
+
+#### Flexbox and Grid
+
 - flex  |  justify-between | justify-evenly  | space-x-6 flex-wrap | items-center
 - flex-col | item-center | items-start | space-y-6 | justify-between
 - grid | grid-cols-3 | gap-2
 - grid | grid-rows-3
+
+
 - rounded-2xl | rounded-md | rounded-full
 - cursor-pointer
-- hover: bg-grey-400
+
+#### States
+
+- hover: bg-grey-400 | focus:text-purple-600 | hover:text-white | visited:text-gray-400 |  only:p-4(When element is only child, set padding to level 4 spacing) | even:bg-gray-100(When element is even numbered child, set background color to level 100 gray.)  | first:font-bold | odd:bg-gray-50 | indeterminate:bg-gray-300 | placeholder:text-gray-300 | placeholder-shown:border-gray-500 | checked:bg-gray-50 |backdrop:bg-gray-50 | nth-last-2:mx-6 | only-of-type:mx-6 | before:text-red-500 | invalid:border-red-500 | out-of-range:border-red-500 | first-letter:text-xl | selection:text-lime-900 | target:text-yellow-100 | focus-within:border-blue-200 | in-focus:bg-blue-400(When element's ancestor is focused, set element's background color to level 400 blue.) | in-active:bg-blue-500(When element's ancestor is active, set element's background color to level 500 blue.) | first:hover:font-bold(On hover, when element is first child, set font weight to bold.) 
+
+
+group-hover:bg-blue-400(When element's ancestor marked with group class is hovered, set element's background color to level 400 blue.) | group-odd:text-lg | *:m-4(Set all direct children to have margin of level 4 spacing.) | peer-focus:border-green-400(When element's sibling marked with peer class is focused, set element's border color to level 400 green.) | has-[a]:bg-blue-200 (When element has a descendant that is an <a> element, set background color to level 200 blue.) | has-checked:bg-indigo-50(When element has a descendant that is checked, set background color to level 50 indigo.) | **:data-avatar:m-4(Set all descendants with data-avatar attribute to have margin of level 4 spacing.) | peer-has-checked:text-gray-200 (When element's sibling marked with peer class has a descendant that is checked, set element's text color to level 200 gray.) | 
+
+```css
+
+&:focus {color: var(--color-purple-600); */}
+
+.group:hover & {
+  background-color: var(--color-blue-400);
+}
+
+&:only-child {
+  padding: calc(var(--spacing) * 4);
+}
+
+&:nth-child(even) {
+  background-color: var(--color-gray-100);
+}
+
+&:nth-child(odd) {
+  background-color: var(--color-gray-50);
+}
+
+&:indeterminate {
+  background-color: var(--color-gray-300);
+}
+
+&::placeholder {
+  color: var(--color-gray-300);
+}
+
+&::before {
+  color: calc(var(--color-red-500));
+}
+
+&:checked {
+  background-color: var(--color-blue-500);
+}
+
+&:nth-last-child(2) {
+  margin-inline: calc(var(--spacing) * 6);
+}
+
+&:only-of-type {
+  margin-inline: calc(var(--spacing) * 6);
+}
+
+&:has(a) {
+  background-color: var(--color-blue-200);
+}
+
+&:has(:checked) {
+  background-color: var(--color-indigo-50);
+}
+
+```
 - media query | sm: | lg:
 - color ranges from 50 - 950
 - shadow-xl
 - ring-1 | ring-slate-900/5
 - If you don't provide width for grid it takes whole space for the element
-
 
 ## media queries
 md:block hidden-> appear on screen wider than 768px 
