@@ -15,18 +15,21 @@
 
 ## basic classes
 
-#### Spacing
+#### Spacing / Sizing
 
-- p | m | w | h | w-full
+- p | m | w | h | w-full 
 - p-4 | px-4 | py-4 | pr-4 | pl-4 | pb-4 | pt-4 | p-[10px]  | w-1/2
 
 - px-[5rem] | py-[10%] | py-[1px] | py-1 | pe-2(padding-inline-end: calc(var(--spacing) * 2)) | pl-4 | pt-0 | -ml-2 | ms-5 (margin-inline-start: calc(var(--spacing) * 5)) | pe-px(Set horizontal end padding to 1 pixel.
 ) | 
 
+- h-1 | h-screen(height: 100vh) ((viewport height)) | min-h-screen(min-height: 100vh) | h-1/3(height: 33.333333%) | min-h-full | max-h-[85%](max-height: 85%) | h-[100svh](height: 100svh) | h-[calc(100vh-80px)](height: calc(100vh - 80px)) | w-0(width: 0px) | w-px(width: 1px) | w-3/4(width: 75%) | max-w-xl(max-width: var(--container-xl)  /* 36rem (576px) */) | min-w-max(min-width: max-content) | max-w-md(max-width: var(--container-md)) | w-fit(width: fit-content) | w-auto(width: auto) | size-4(Set both width and height to level 4 spacing) | size-full(Set both width and height to 100%.) | max-w-[min(90vw,1200px)] (max-width: min(90vw,1200px)) | 
+
 
 -space-x-1 (Set horizontal space between children to negative level 1 spacing.)| 
 space-y-3 (Set vertical space between children to level 3 spacing.) | space-x-[5rem] |
-space-y-px (Set vertical space between children to 1 pixel.)
+space-y-px (Set vertical space between children to 1 pixel.) | 
+
 
 #### Typography
 
@@ -40,16 +43,26 @@ space-y-px (Set vertical space between children to 1 pixel.)
 
 - border-rose-400 | bg-sky-500 | text-white-600 | border-transparent | bg-purple-50/75(background-color: color-mix(in oklab, var(--color-purple-50) 75%, transparent)) | border-orange-950/[80.8%] | border-white/[80.5%]
 
+
+#### Borders
+
 - border-2 | border-black | border-rose-400 | border-solid
+
+#### Layout 
+
 - absolute
+
+#### Backgrounds
+
 - bg-sky-500
 
 #### Flexbox and Grid
 
-- flex  |  justify-between | justify-evenly  | space-x-6 flex-wrap | items-center
-- flex-col | item-center | items-start | space-y-6 | justify-between
-- grid | grid-cols-3 | gap-2
-- grid | grid-rows-3
+- flex  | inline-flex | flex-col | flex-col-reverse(flex-direction: column-reverse) |  justify-between(justify-content: space-between) | justify-start(justify-content: flex-start) | justify-evenly  | space-x-6 | flex-wrap | items-center | items-start |  grow(flex-grow: 1) |  gap-0(gap: 0px) | gap-px(gap: 1px) |  | gap-y-6(row-gap: calc(var(--spacing) * 6)) | gap-y-[15px](row-gap: 15px) | order-none | self-center(align-self: center) | self-stretch | content-stretch(align-content: stretch) | shrink-[3](flex-shrink: 3) | flex-none(flex: none) | place-items-end(place-items: end) | place-items-stretch | place-content-center(place-content: center) | flex-[2_2_0%](flex: 2 2 0%)(Set flex grow to 2, flex shrink to 2, and flex basis to 0%) | flex-[0_1_auto](flex: 0 1 auto) | 
+
+
+- grid | grid-cols-3 | grid-rows-1(grid-template-rows: repeat(1, minmax(0, 1fr))) | grid-rows-2(grid-template-rows: repeat(2, minmax(0, 1fr))) | grid-cols-[200px_1fr_100px](grid-template-columns: 200px 1fr 100px) | grid-cols-4(grid-template-columns: repeat(4, minmax(0, 1fr))) | grid-rows-subgrid(grid-template-rows: subgrid) | grid-rows-[min-content_auto](grid-template-rows: min-content auto) | grid-flow-col-dense(grid-auto-flow: column dense) | gap-2 | gap-y-6  | auto-cols-max(grid-auto-columns: max-content) | auto-rows-max(grid-auto-rows: max-content) | auto-cols-min(grid-auto-columns: min-content) | auto-cols-fr(grid-auto-columns: minmax(0, 1fr)) | 
+- col-start-2(grid-column-start: 2) | col-end-auto(grid-column-end: auto) |  row-[1/span_2](grid-row: 1 / span 2)
 
 
 - rounded-2xl | rounded-md | rounded-full
@@ -117,11 +130,26 @@ group-hover:bg-blue-400(When element's ancestor marked with group class is hover
 ```
 - media query | sm: | lg:
 - color ranges from 50 - 950
+
+#### Filters and Effects
+
 - shadow-xl
 - ring-1 | ring-slate-900/5
 - If you don't provide width for grid it takes whole space for the element
 
-## media queries
+#### Tables
+
+
+#### Interactivity
+
+
+#### Transitions and Animations
+
+
+#### Transforms
+
+
+## Responsive (media queries) 
 md:block hidden-> appear on screen wider than 768px 
 sm:bg-amber-500 md:bg-amber-700 
 - by default tailwind uses min-width media queries(mobile first approach) but u can use max-width using  max-sm:
